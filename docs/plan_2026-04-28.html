@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>ZT Controller — Daily Plan 2026-04-28</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #0f1117; color: #e0e0e0; padding: 24px; }
+  h1 { color: #7eb8f7; margin-bottom: 4px; }
+  .subtitle { color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+  .stats { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .stat { background: #1a1d27; border: 1px solid #2a2d3a; border-radius: 8px;
+           padding: 12px 20px; min-width: 140px; }
+  .stat-val { font-size: 2rem; font-weight: bold; color: #7eb8f7; }
+  .stat-label { font-size: 0.8rem; color: #888; margin-top: 2px; }
+  .cafe-summary { background: #1e1a10; border: 1px solid #f0a500; border-radius: 8px;
+                   padding: 16px; margin-bottom: 24px; }
+  .cafe-summary h3 { color: #f0a500; margin-bottom: 8px; }
+  .cafe-summary li { margin: 4px 0 4px 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(480px, 1fr)); gap: 16px; }
+  .card { background: #1a1d27; border: 1px solid #2a2d3a; border-radius: 10px;
+           padding: 16px; transition: border-color .2s; }
+  .card:hover { border-color: #4a7ec7; }
+  .cafe-card { border-color: #f0a500 !important; background: #1e1c14; }
+  .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .emp-id { font-weight: bold; font-size: 1rem; color: #c0d8f8; }
+  .cafe-badge { background: #f0a500; color: #000; font-size: 0.72rem;
+                 padding: 2px 8px; border-radius: 20px; font-weight: bold; }
+  .task-count { margin-left: auto; color: #888; font-size: 0.85rem; }
+  .card-meta { display: flex; gap: 12px; flex-wrap: wrap; font-size: 0.82rem;
+                color: #aaa; margin-bottom: 12px; }
+  .timeline-bar { display: flex; align-items: center; gap: 8px; margin: 10px 0 12px; }
+  .tl-label { font-size: 0.75rem; color: #888; white-space: nowrap; }
+  .tl-track { flex: 1; height: 12px; background: #2a2d3a; border-radius: 6px;
+               position: relative; }
+  .dot { position: absolute; width: 10px; height: 10px; border-radius: 50%;
+          top: 1px; transform: translateX(-50%); cursor: pointer; }
+  .dot-in   { background: #4caf50; }
+  .dot-work { background: #7eb8f7; }
+  .dot-out  { background: #ef5350; }
+  details summary { cursor: pointer; color: #7eb8f7; font-size: 0.85rem;
+                     margin-bottom: 8px; user-select: none; }
+  .task-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  .task-table th { background: #12141e; color: #888; padding: 6px 8px;
+                    text-align: left; border-bottom: 1px solid #2a2d3a; }
+  .task-table td { padding: 5px 8px; border-bottom: 1px solid #1e2030; }
+  .task-table tr:last-child td { border-bottom: none; }
+  .badge { padding: 1px 7px; border-radius: 10px; font-size: 0.75rem; }
+  .type-in   .badge { background:#1b3d1e; color:#4caf50; }
+  .type-work .badge { background:#1a2a3d; color:#7eb8f7; }
+  .type-out  .badge { background:#3d1b1b; color:#ef5350; }
+  .status { color: #aaa; }
+</style>
+</head>
+<body>
+<h1>ZT Controller — Daily Plan</h1>
+<p class="subtitle">생성일: 2026-04-28 &nbsp;|&nbsp; seed: "2026-04-28:zt-controller:v1"</p>
+
+<div class="stats">
+  <div class="stat"><div class="stat-val">20</div><div class="stat-label">총 직원</div></div>
+  <div class="stat"><div class="stat-val">0</div><div class="stat-label">카페 배정</div></div>
+  <div class="stat"><div class="stat-val">261</div><div class="stat-label">총 run_tasks</div></div>
+  <div class="stat"><div class="stat-val">13</div><div class="stat-label">평균 tasks/인</div></div>
+</div>
+
+
+
+<div class="grid">
+
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">branch-dev-director</span>
+            
+            <span class="task-count">14 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 branch-dev</span>
+            <span>📍 branch-dev</span>
+            <span>🕗 08:42 ~ 18:56</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">08:42</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="08:42 attendance-clock-in"></div><div class="dot dot-work" style="left:9.6%" title="09:41 nextcloud-file-browse"></div><div class="dot dot-work" style="left:17.2%" title="10:28 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:24.7%" title="11:14 groupoffice-email-read"></div><div class="dot dot-work" style="left:34.4%" title="12:14 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:43.7%" title="13:10 groupoffice-task-create"></div><div class="dot dot-work" style="left:49.6%" title="13:46 groupoffice-task-create"></div><div class="dot dot-work" style="left:57.6%" title="14:36 groupoffice-email-read"></div><div class="dot dot-work" style="left:65.6%" title="15:25 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:72.3%" title="16:06 nextcloud-file-upload"></div><div class="dot dot-work" style="left:78.7%" title="16:45 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:85.8%" title="17:28 groupoffice-task-create"></div><div class="dot dot-work" style="left:95.4%" title="18:27 groupoffice-task-create"></div><div class="dot dot-out" style="left:100.0%" title="18:56 attendance-clock-out"></div></div><div class="tl-label">18:56</div></div>
+          <details>
+            <summary>Task 목록 (14개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-branch-dev-director-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>08:42</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-director-002</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>09:41</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-director-003</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>10:28</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-director-004</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>11:14</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-director-005</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>12:14</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-director-006</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>13:10</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-director-007</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>13:46</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-director-008</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>14:36</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-director-009</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>15:25</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-director-010</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>16:06</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-director-011</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>16:45</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-director-012</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>17:28</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-director-013</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>18:27</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-branch-dev-director-014</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>18:56</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">branch-dev-manager</span>
+            
+            <span class="task-count">13 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 branch-dev</span>
+            <span>📍 branch-dev</span>
+            <span>🕗 09:14 ~ 18:16</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">09:14</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="09:14 attendance-clock-in"></div><div class="dot dot-work" style="left:11.0%" title="10:13 nextcloud-file-browse"></div><div class="dot dot-work" style="left:19.6%" title="11:00 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:26.6%" title="11:38 nextcloud-file-upload"></div><div class="dot dot-work" style="left:36.1%" title="12:30 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:44.0%" title="13:12 nextcloud-file-browse"></div><div class="dot dot-work" style="left:51.4%" title="13:52 nextcloud-file-upload"></div><div class="dot dot-work" style="left:60.1%" title="14:40 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:70.7%" title="15:37 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:77.1%" title="16:11 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:87.0%" title="17:05 groupoffice-task-create"></div><div class="dot dot-work" style="left:93.9%" title="17:42 groupoffice-notes-manage"></div><div class="dot dot-out" style="left:100.0%" title="18:16 attendance-clock-out"></div></div><div class="tl-label">18:16</div></div>
+          <details>
+            <summary>Task 목록 (13개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-branch-dev-manager-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>09:14</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-manager-002</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>10:13</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-manager-003</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>11:00</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-manager-004</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>11:38</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-manager-005</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>12:30</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-manager-006</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>13:12</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-manager-007</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>13:52</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-manager-008</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>14:40</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-manager-009</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>15:37</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-manager-010</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>16:11</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-manager-011</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>17:05</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-manager-012</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>17:42</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-branch-dev-manager-013</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>18:16</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">branch-dev-senior</span>
+            
+            <span class="task-count">14 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 branch-dev</span>
+            <span>📍 branch-dev</span>
+            <span>🕗 08:31 ~ 18:26</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">08:31</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="08:31 attendance-clock-in"></div><div class="dot dot-work" style="left:8.2%" title="09:20 nextcloud-file-upload"></div><div class="dot dot-work" style="left:16.7%" title="10:10 nextcloud-file-upload"></div><div class="dot dot-work" style="left:25.8%" title="11:05 groupoffice-task-create"></div><div class="dot dot-work" style="left:31.4%" title="11:38 nextcloud-search"></div><div class="dot dot-work" style="left:37.6%" title="12:15 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:46.8%" title="13:09 groupoffice-task-create"></div><div class="dot dot-work" style="left:53.8%" title="13:51 nextcloud-file-upload"></div><div class="dot dot-work" style="left:59.6%" title="14:26 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:67.7%" title="15:14 nextcloud-file-browse"></div><div class="dot dot-work" style="left:76.7%" title="16:08 nextcloud-search"></div><div class="dot dot-work" style="left:85.6%" title="17:01 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:95.1%" title="17:58 nextcloud-file-browse"></div><div class="dot dot-out" style="left:100.0%" title="18:26 attendance-clock-out"></div></div><div class="tl-label">18:26</div></div>
+          <details>
+            <summary>Task 목록 (14개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-branch-dev-senior-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>08:31</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-senior-002</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>09:20</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-senior-003</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>10:10</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-senior-004</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>11:05</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-senior-005</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>11:38</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-senior-006</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>12:15</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-senior-007</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>13:09</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-senior-008</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>13:51</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-senior-009</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>14:26</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-senior-010</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>15:14</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-senior-011</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>16:08</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-senior-012</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>17:01</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-senior-013</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>17:58</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-branch-dev-senior-014</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>18:26</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">branch-dev-staff</span>
+            
+            <span class="task-count">14 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 branch-dev</span>
+            <span>📍 branch-dev</span>
+            <span>🕗 08:49 ~ 17:37</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">08:49</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="08:49 attendance-clock-in"></div><div class="dot dot-work" style="left:9.9%" title="09:41 nextcloud-file-browse"></div><div class="dot dot-work" style="left:17.8%" title="10:22 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:24.5%" title="10:58 nextcloud-file-browse"></div><div class="dot dot-work" style="left:31.9%" title="11:37 groupoffice-email-read"></div><div class="dot dot-work" style="left:38.7%" title="12:13 groupoffice-email-read"></div><div class="dot dot-work" style="left:45.8%" title="12:51 groupoffice-email-read"></div><div class="dot dot-work" style="left:51.7%" title="13:22 nextcloud-search"></div><div class="dot dot-work" style="left:60.3%" title="14:07 groupoffice-email-read"></div><div class="dot dot-work" style="left:66.5%" title="14:40 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:74.1%" title="15:20 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:84.1%" title="16:13 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:94.0%" title="17:05 groupoffice-notes-manage"></div><div class="dot dot-out" style="left:100.0%" title="17:37 attendance-clock-out"></div></div><div class="tl-label">17:37</div></div>
+          <details>
+            <summary>Task 목록 (14개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-branch-dev-staff-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>08:49</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-staff-002</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>09:41</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-staff-003</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>10:22</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-staff-004</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>10:58</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-staff-005</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>11:37</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-staff-006</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>12:13</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-staff-007</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>12:51</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-staff-008</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>13:22</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-staff-009</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>14:07</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-staff-010</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>14:40</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-staff-011</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>15:20</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-staff-012</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>16:13</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-dev-staff-013</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>17:05</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-branch-dev-staff-014</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>17:37</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">branch-it-director</span>
+            
+            <span class="task-count">13 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 branch-it</span>
+            <span>📍 branch-it</span>
+            <span>🕗 08:53 ~ 18:23</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">08:53</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="08:53 attendance-clock-in"></div><div class="dot dot-work" style="left:7.6%" title="09:36 nextcloud-file-upload"></div><div class="dot dot-work" style="left:16.8%" title="10:28 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:22.9%" title="11:04 groupoffice-email-read"></div><div class="dot dot-work" style="left:32.0%" title="11:55 nextcloud-file-upload"></div><div class="dot dot-work" style="left:41.9%" title="12:51 nextcloud-file-upload"></div><div class="dot dot-work" style="left:51.9%" title="13:49 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:60.0%" title="14:35 nextcloud-file-upload"></div><div class="dot dot-work" style="left:70.2%" title="15:33 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:77.7%" title="16:16 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:87.9%" title="17:14 groupoffice-task-create"></div><div class="dot dot-work" style="left:94.7%" title="17:53 nextcloud-search"></div><div class="dot dot-out" style="left:100.0%" title="18:23 attendance-clock-out"></div></div><div class="tl-label">18:23</div></div>
+          <details>
+            <summary>Task 목록 (13개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-branch-it-director-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>08:53</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-director-002</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>09:36</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-director-003</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>10:28</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-director-004</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>11:04</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-director-005</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>11:55</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-director-006</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>12:51</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-director-007</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>13:49</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-director-008</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>14:35</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-director-009</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>15:33</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-director-010</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>16:16</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-director-011</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>17:14</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-director-012</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>17:53</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-branch-it-director-013</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>18:23</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">branch-it-manager</span>
+            
+            <span class="task-count">14 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 branch-it</span>
+            <span>📍 branch-it</span>
+            <span>🕗 09:40 ~ 18:09</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">09:40</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="09:40 attendance-clock-in"></div><div class="dot dot-work" style="left:8.3%" title="10:22 groupoffice-task-create"></div><div class="dot dot-work" style="left:14.9%" title="10:55 groupoffice-task-create"></div><div class="dot dot-work" style="left:26.6%" title="11:55 nextcloud-file-browse"></div><div class="dot dot-work" style="left:32.9%" title="12:27 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:43.8%" title="13:22 groupoffice-task-create"></div><div class="dot dot-work" style="left:50.1%" title="13:54 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:61.0%" title="14:50 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:67.0%" title="15:20 groupoffice-task-create"></div><div class="dot dot-work" style="left:75.2%" title="16:02 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:82.0%" title="16:37 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:93.3%" title="17:35 nextcloud-file-browse"></div><div class="dot dot-work" style="left:99.3%" title="18:05 nextcloud-search"></div><div class="dot dot-out" style="left:100.0%" title="18:09 attendance-clock-out"></div></div><div class="tl-label">18:09</div></div>
+          <details>
+            <summary>Task 목록 (14개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-branch-it-manager-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>09:40</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-manager-002</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>10:22</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-manager-003</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>10:55</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-manager-004</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>11:55</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-manager-005</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>12:27</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-manager-006</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>13:22</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-manager-007</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>13:54</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-manager-008</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>14:50</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-manager-009</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>15:20</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-manager-010</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>16:02</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-manager-011</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>16:37</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-manager-012</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>17:35</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-manager-013</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>18:05</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-branch-it-manager-014</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>18:09</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">branch-it-senior</span>
+            
+            <span class="task-count">15 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 branch-it</span>
+            <span>📍 branch-it</span>
+            <span>🕗 08:32 ~ 18:47</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">08:32</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="08:32 attendance-clock-in"></div><div class="dot dot-work" style="left:7.4%" title="09:17 nextcloud-search"></div><div class="dot dot-work" style="left:15.2%" title="10:05 nextcloud-file-upload"></div><div class="dot dot-work" style="left:23.6%" title="10:57 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:31.7%" title="11:47 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:39.1%" title="12:32 nextcloud-file-upload"></div><div class="dot dot-work" style="left:45.4%" title="13:11 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:54.9%" title="14:09 nextcloud-search"></div><div class="dot dot-work" style="left:60.4%" title="14:43 nextcloud-file-browse"></div><div class="dot dot-work" style="left:67.0%" title="15:24 groupoffice-task-create"></div><div class="dot dot-work" style="left:72.5%" title="15:58 groupoffice-email-read"></div><div class="dot dot-work" style="left:80.4%" title="16:47 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:88.4%" title="17:36 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:98.0%" title="18:35 groupoffice-addressbook-search"></div><div class="dot dot-out" style="left:100.0%" title="18:47 attendance-clock-out"></div></div><div class="tl-label">18:47</div></div>
+          <details>
+            <summary>Task 목록 (15개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-branch-it-senior-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>08:32</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-senior-002</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>09:17</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-senior-003</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>10:05</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-senior-004</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>10:57</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-senior-005</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>11:47</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-senior-006</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>12:32</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-senior-007</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>13:11</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-senior-008</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>14:09</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-senior-009</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>14:43</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-senior-010</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>15:24</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-senior-011</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>15:58</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-senior-012</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>16:47</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-senior-013</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>17:36</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-senior-014</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>18:35</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-branch-it-senior-015</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>18:47</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">branch-it-staff</span>
+            
+            <span class="task-count">13 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 branch-it</span>
+            <span>📍 branch-it</span>
+            <span>🕗 09:03 ~ 17:20</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">09:03</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="09:03 attendance-clock-in"></div><div class="dot dot-work" style="left:7.3%" title="09:40 groupoffice-task-create"></div><div class="dot dot-work" style="left:15.6%" title="10:21 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:23.4%" title="11:00 nextcloud-search"></div><div class="dot dot-work" style="left:31.9%" title="11:42 groupoffice-email-read"></div><div class="dot dot-work" style="left:41.9%" title="12:32 nextcloud-file-browse"></div><div class="dot dot-work" style="left:49.7%" title="13:10 nextcloud-file-upload"></div><div class="dot dot-work" style="left:59.5%" title="13:59 groupoffice-email-read"></div><div class="dot dot-work" style="left:68.1%" title="14:42 groupoffice-email-read"></div><div class="dot dot-work" style="left:74.6%" title="15:14 nextcloud-file-browse"></div><div class="dot dot-work" style="left:82.3%" title="15:52 groupoffice-task-create"></div><div class="dot dot-work" style="left:92.1%" title="16:41 groupoffice-calendar-check"></div><div class="dot dot-out" style="left:100.0%" title="17:20 attendance-clock-out"></div></div><div class="tl-label">17:20</div></div>
+          <details>
+            <summary>Task 목록 (13개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-branch-it-staff-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>09:03</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-staff-002</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>09:40</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-staff-003</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>10:21</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-staff-004</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>11:00</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-staff-005</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>11:42</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-staff-006</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>12:32</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-staff-007</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>13:10</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-staff-008</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>13:59</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-staff-009</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>14:42</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-staff-010</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>15:14</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-staff-011</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>15:52</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-branch-it-staff-012</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>16:41</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-branch-it-staff-013</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>17:20</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">enter-fin-director</span>
+            
+            <span class="task-count">11 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 enterprise-finance</span>
+            <span>📍 enterprise-finance</span>
+            <span>🕗 09:51 ~ 17:13</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">09:51</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="09:51 attendance-clock-in"></div><div class="dot dot-work" style="left:10.7%" title="10:38 groupoffice-email-read"></div><div class="dot dot-work" style="left:22.3%" title="11:29 nextcloud-file-browse"></div><div class="dot dot-work" style="left:30.8%" title="12:07 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:41.9%" title="12:57 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:54.1%" title="13:50 nextcloud-file-browse"></div><div class="dot dot-work" style="left:66.8%" title="14:46 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:78.7%" title="15:39 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:86.0%" title="16:11 groupoffice-email-read"></div><div class="dot dot-work" style="left:94.5%" title="16:49 groupoffice-calendar-check"></div><div class="dot dot-out" style="left:100.0%" title="17:13 attendance-clock-out"></div></div><div class="tl-label">17:13</div></div>
+          <details>
+            <summary>Task 목록 (11개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-enter-fin-director-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>09:51</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-director-002</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>10:38</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-director-003</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>11:29</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-director-004</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>12:07</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-director-005</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>12:57</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-director-006</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>13:50</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-director-007</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>14:46</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-director-008</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>15:39</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-director-009</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>16:11</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-director-010</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>16:49</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-enter-fin-director-011</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>17:13</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">enter-fin-manager</span>
+            
+            <span class="task-count">14 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 enterprise-finance</span>
+            <span>📍 enterprise-finance</span>
+            <span>🕗 08:09 ~ 17:05</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">08:09</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="08:09 attendance-clock-in"></div><div class="dot dot-work" style="left:8.8%" title="08:56 groupoffice-email-read"></div><div class="dot dot-work" style="left:17.0%" title="09:40 groupoffice-task-create"></div><div class="dot dot-work" style="left:24.1%" title="10:18 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:31.7%" title="10:59 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:40.8%" title="11:48 groupoffice-email-read"></div><div class="dot dot-work" style="left:50.5%" title="12:40 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:58.9%" title="13:25 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:67.1%" title="14:08 nextcloud-file-browse"></div><div class="dot dot-work" style="left:75.7%" title="14:55 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:85.0%" title="15:44 nextcloud-search"></div><div class="dot dot-work" style="left:92.7%" title="16:26 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:99.8%" title="17:04 groupoffice-email-read"></div><div class="dot dot-out" style="left:100.0%" title="17:05 attendance-clock-out"></div></div><div class="tl-label">17:05</div></div>
+          <details>
+            <summary>Task 목록 (14개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-enter-fin-manager-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>08:09</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-manager-002</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>08:56</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-manager-003</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>09:40</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-manager-004</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>10:18</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-manager-005</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>10:59</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-manager-006</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>11:48</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-manager-007</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>12:40</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-manager-008</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>13:25</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-manager-009</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>14:08</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-manager-010</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>14:55</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-manager-011</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>15:44</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-manager-012</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>16:26</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-manager-013</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>17:04</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-enter-fin-manager-014</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>17:05</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">enter-fin-senior</span>
+            
+            <span class="task-count">12 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 enterprise-finance</span>
+            <span>📍 enterprise-finance</span>
+            <span>🕗 09:16 ~ 17:19</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">09:16</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="09:16 attendance-clock-in"></div><div class="dot dot-work" style="left:6.6%" title="09:48 groupoffice-email-read"></div><div class="dot dot-work" style="left:13.2%" title="10:19 nextcloud-file-browse"></div><div class="dot dot-work" style="left:24.6%" title="11:15 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:31.9%" title="11:50 nextcloud-file-browse"></div><div class="dot dot-work" style="left:42.9%" title="12:43 groupoffice-email-read"></div><div class="dot dot-work" style="left:51.6%" title="13:25 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:62.1%" title="14:16 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:71.9%" title="15:04 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:83.7%" title="16:01 nextcloud-file-upload"></div><div class="dot dot-work" style="left:91.8%" title="16:40 nextcloud-search"></div><div class="dot dot-out" style="left:100.0%" title="17:19 attendance-clock-out"></div></div><div class="tl-label">17:19</div></div>
+          <details>
+            <summary>Task 목록 (12개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-enter-fin-senior-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>09:16</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-senior-002</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>09:48</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-senior-003</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>10:19</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-senior-004</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>11:15</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-senior-005</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>11:50</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-senior-006</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>12:43</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-senior-007</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>13:25</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-senior-008</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>14:16</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-senior-009</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>15:04</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-senior-010</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>16:01</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-senior-011</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>16:40</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-enter-fin-senior-012</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>17:19</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">enter-fin-staff</span>
+            
+            <span class="task-count">14 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 enterprise-finance</span>
+            <span>📍 enterprise-finance</span>
+            <span>🕗 08:53 ~ 18:09</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">08:53</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="08:53 attendance-clock-in"></div><div class="dot dot-work" style="left:9.8%" title="09:48 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:17.5%" title="10:31 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:23.7%" title="11:05 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:31.3%" title="11:47 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:38.2%" title="12:26 groupoffice-task-create"></div><div class="dot dot-work" style="left:45.7%" title="13:07 groupoffice-task-create"></div><div class="dot dot-work" style="left:54.6%" title="13:57 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:65.1%" title="14:55 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:70.8%" title="15:27 nextcloud-search"></div><div class="dot dot-work" style="left:76.3%" title="15:57 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:86.6%" title="16:54 nextcloud-file-browse"></div><div class="dot dot-work" style="left:93.7%" title="17:34 groupoffice-addressbook-search"></div><div class="dot dot-out" style="left:100.0%" title="18:09 attendance-clock-out"></div></div><div class="tl-label">18:09</div></div>
+          <details>
+            <summary>Task 목록 (14개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-enter-fin-staff-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>08:53</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-staff-002</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>09:48</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-staff-003</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>10:31</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-staff-004</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>11:05</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-staff-005</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>11:47</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-staff-006</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>12:26</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-staff-007</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>13:07</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-staff-008</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>13:57</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-staff-009</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>14:55</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-staff-010</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>15:27</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-staff-011</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>15:57</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-staff-012</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>16:54</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-fin-staff-013</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>17:34</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-enter-fin-staff-014</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>18:09</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">enter-hr-director</span>
+            
+            <span class="task-count">13 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 enterprise-hr</span>
+            <span>📍 enterprise-hr</span>
+            <span>🕗 08:11 ~ 17:15</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">08:11</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="08:11 attendance-clock-in"></div><div class="dot dot-work" style="left:9.1%" title="09:01 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:16.8%" title="09:42 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:26.7%" title="10:36 groupoffice-email-read"></div><div class="dot dot-work" style="left:35.8%" title="11:25 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:42.7%" title="12:03 nextcloud-file-upload"></div><div class="dot dot-work" style="left:53.6%" title="13:02 groupoffice-task-create"></div><div class="dot dot-work" style="left:60.7%" title="13:41 nextcloud-file-upload"></div><div class="dot dot-work" style="left:70.0%" title="14:32 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:76.4%" title="15:07 nextcloud-file-upload"></div><div class="dot dot-work" style="left:84.1%" title="15:48 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:94.7%" title="16:46 nextcloud-search"></div><div class="dot dot-out" style="left:100.0%" title="17:15 attendance-clock-out"></div></div><div class="tl-label">17:15</div></div>
+          <details>
+            <summary>Task 목록 (13개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-enter-hr-director-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>08:11</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-director-002</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>09:01</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-director-003</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>09:42</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-director-004</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>10:36</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-director-005</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>11:25</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-director-006</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>12:03</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-director-007</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>13:02</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-director-008</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>13:41</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-director-009</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>14:32</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-director-010</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>15:07</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-director-011</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>15:48</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-director-012</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>16:46</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-enter-hr-director-013</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>17:15</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">enter-hr-manager</span>
+            
+            <span class="task-count">13 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 enterprise-hr</span>
+            <span>📍 enterprise-hr</span>
+            <span>🕗 09:35 ~ 18:06</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">09:35</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="09:35 attendance-clock-in"></div><div class="dot dot-work" style="left:10.7%" title="10:29 nextcloud-file-upload"></div><div class="dot dot-work" style="left:20.2%" title="11:18 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:31.6%" title="12:16 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:41.7%" title="13:08 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:48.8%" title="13:44 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:55.4%" title="14:18 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:61.7%" title="14:50 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:68.1%" title="15:23 groupoffice-email-read"></div><div class="dot dot-work" style="left:76.0%" title="16:03 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:85.9%" title="16:54 nextcloud-search"></div><div class="dot dot-work" style="left:94.7%" title="17:39 nextcloud-search"></div><div class="dot dot-out" style="left:100.0%" title="18:06 attendance-clock-out"></div></div><div class="tl-label">18:06</div></div>
+          <details>
+            <summary>Task 목록 (13개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-enter-hr-manager-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>09:35</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-manager-002</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>10:29</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-manager-003</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>11:18</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-manager-004</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>12:16</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-manager-005</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>13:08</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-manager-006</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>13:44</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-manager-007</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>14:18</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-manager-008</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>14:50</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-manager-009</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>15:23</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-manager-010</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>16:03</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-manager-011</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>16:54</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-manager-012</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>17:39</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-enter-hr-manager-013</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>18:06</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">enter-hr-senior</span>
+            
+            <span class="task-count">11 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 enterprise-hr</span>
+            <span>📍 enterprise-hr</span>
+            <span>🕗 09:49 ~ 17:13</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">09:49</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="09:49 attendance-clock-in"></div><div class="dot dot-work" style="left:9.4%" title="10:30 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:20.5%" title="11:20 groupoffice-task-create"></div><div class="dot dot-work" style="left:29.9%" title="12:01 nextcloud-file-browse"></div><div class="dot dot-work" style="left:43.1%" title="13:00 groupoffice-email-read"></div><div class="dot dot-work" style="left:52.6%" title="13:43 nextcloud-search"></div><div class="dot dot-work" style="left:61.3%" title="14:21 nextcloud-file-upload"></div><div class="dot dot-work" style="left:69.5%" title="14:58 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:82.5%" title="15:55 groupoffice-email-read"></div><div class="dot dot-work" style="left:91.8%" title="16:37 groupoffice-email-read"></div><div class="dot dot-out" style="left:100.0%" title="17:13 attendance-clock-out"></div></div><div class="tl-label">17:13</div></div>
+          <details>
+            <summary>Task 목록 (11개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-enter-hr-senior-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>09:49</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-senior-002</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>10:30</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-senior-003</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>11:20</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-senior-004</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>12:01</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-senior-005</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>13:00</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-senior-006</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>13:43</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-senior-007</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>14:21</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-senior-008</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>14:58</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-senior-009</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>15:55</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-senior-010</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>16:37</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-enter-hr-senior-011</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>17:13</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">enter-hr-staff</span>
+            
+            <span class="task-count">12 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 enterprise-hr</span>
+            <span>📍 enterprise-hr</span>
+            <span>🕗 09:27 ~ 17:06</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">09:27</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="09:27 attendance-clock-in"></div><div class="dot dot-work" style="left:11.4%" title="10:19 nextcloud-search"></div><div class="dot dot-work" style="left:21.3%" title="11:05 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:30.0%" title="11:45 nextcloud-file-upload"></div><div class="dot dot-work" style="left:38.8%" title="12:25 groupoffice-email-read"></div><div class="dot dot-work" style="left:51.2%" title="13:22 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:63.3%" title="14:18 groupoffice-email-read"></div><div class="dot dot-work" style="left:70.3%" title="14:50 groupoffice-task-create"></div><div class="dot dot-work" style="left:82.5%" title="15:46 groupoffice-task-create"></div><div class="dot dot-work" style="left:91.7%" title="16:28 nextcloud-file-upload"></div><div class="dot dot-work" style="left:99.2%" title="17:03 groupoffice-notes-manage"></div><div class="dot dot-out" style="left:100.0%" title="17:06 attendance-clock-out"></div></div><div class="tl-label">17:06</div></div>
+          <details>
+            <summary>Task 목록 (12개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-enter-hr-staff-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>09:27</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-staff-002</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>10:19</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-staff-003</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>11:05</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-staff-004</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>11:45</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-staff-005</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>12:25</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-staff-006</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>13:22</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-staff-007</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>14:18</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-staff-008</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>14:50</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-staff-009</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>15:46</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-staff-010</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>16:28</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-hr-staff-011</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>17:03</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-enter-hr-staff-012</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>17:06</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">enter-sales-director</span>
+            
+            <span class="task-count">13 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 enterprise-sales</span>
+            <span>📍 enterprise-sales</span>
+            <span>🕗 09:28 ~ 18:58</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">09:28</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="09:28 attendance-clock-in"></div><div class="dot dot-work" style="left:6.3%" title="10:04 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:16.1%" title="10:59 nextcloud-file-upload"></div><div class="dot dot-work" style="left:25.6%" title="11:54 groupoffice-task-create"></div><div class="dot dot-work" style="left:34.3%" title="12:44 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:44.7%" title="13:43 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:51.2%" title="14:20 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:59.4%" title="15:07 groupoffice-email-read"></div><div class="dot dot-work" style="left:69.6%" title="16:05 nextcloud-file-upload"></div><div class="dot dot-work" style="left:77.3%" title="16:49 nextcloud-search"></div><div class="dot dot-work" style="left:83.9%" title="17:26 groupoffice-task-create"></div><div class="dot dot-work" style="left:93.8%" title="18:23 groupoffice-calendar-check"></div><div class="dot dot-out" style="left:100.0%" title="18:58 attendance-clock-out"></div></div><div class="tl-label">18:58</div></div>
+          <details>
+            <summary>Task 목록 (13개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-enter-sales-director-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>09:28</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-director-002</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>10:04</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-director-003</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>10:59</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-director-004</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>11:54</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-director-005</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>12:44</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-director-006</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>13:43</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-director-007</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>14:20</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-director-008</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>15:07</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-director-009</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>16:05</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-director-010</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>16:49</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-director-011</td><td>groupoffice-task-create</td><td><span class="badge type-work">work</span></td><td>17:26</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-director-012</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>18:23</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-enter-sales-director-013</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>18:58</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">enter-sales-manager</span>
+            
+            <span class="task-count">13 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 enterprise-sales</span>
+            <span>📍 enterprise-sales</span>
+            <span>🕗 09:06 ~ 17:04</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">09:06</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="09:06 attendance-clock-in"></div><div class="dot dot-work" style="left:7.4%" title="09:41 nextcloud-search"></div><div class="dot dot-work" style="left:19.9%" title="10:41 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:26.3%" title="11:12 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:36.5%" title="12:00 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:45.4%" title="12:43 nextcloud-file-browse"></div><div class="dot dot-work" style="left:52.9%" title="13:19 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:60.1%" title="13:53 nextcloud-search"></div><div class="dot dot-work" style="left:68.5%" title="14:34 nextcloud-file-browse"></div><div class="dot dot-work" style="left:78.0%" title="15:19 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:89.1%" title="16:12 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:99.7%" title="17:03 nextcloud-file-upload"></div><div class="dot dot-out" style="left:100.0%" title="17:04 attendance-clock-out"></div></div><div class="tl-label">17:04</div></div>
+          <details>
+            <summary>Task 목록 (13개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-enter-sales-manager-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>09:06</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-manager-002</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>09:41</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-manager-003</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>10:41</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-manager-004</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>11:12</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-manager-005</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>12:00</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-manager-006</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>12:43</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-manager-007</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>13:19</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-manager-008</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>13:53</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-manager-009</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>14:34</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-manager-010</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>15:19</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-manager-011</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>16:12</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-manager-012</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>17:03</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-enter-sales-manager-013</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>17:04</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">enter-sales-senior</span>
+            
+            <span class="task-count">13 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 enterprise-sales</span>
+            <span>📍 enterprise-sales</span>
+            <span>🕗 09:45 ~ 17:29</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">09:45</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="09:45 attendance-clock-in"></div><div class="dot dot-work" style="left:6.8%" title="10:16 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:16.1%" title="10:59 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:24.0%" title="11:36 nextcloud-file-upload"></div><div class="dot dot-work" style="left:31.1%" title="12:09 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:42.4%" title="13:02 nextcloud-file-upload"></div><div class="dot dot-work" style="left:49.1%" title="13:33 nextcloud-file-browse"></div><div class="dot dot-work" style="left:57.6%" title="14:12 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:70.2%" title="15:11 groupoffice-addressbook-search"></div><div class="dot dot-work" style="left:77.0%" title="15:43 nextcloud-search"></div><div class="dot dot-work" style="left:88.5%" title="16:36 nextcloud-search"></div><div class="dot dot-work" style="left:96.1%" title="17:11 nextcloud-file-upload"></div><div class="dot dot-out" style="left:100.0%" title="17:29 attendance-clock-out"></div></div><div class="tl-label">17:29</div></div>
+          <details>
+            <summary>Task 목록 (13개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-enter-sales-senior-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>09:45</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-senior-002</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>10:16</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-senior-003</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>10:59</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-senior-004</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>11:36</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-senior-005</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>12:09</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-senior-006</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>13:02</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-senior-007</td><td>nextcloud-file-browse</td><td><span class="badge type-work">work</span></td><td>13:33</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-senior-008</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>14:12</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-senior-009</td><td>groupoffice-addressbook-search</td><td><span class="badge type-work">work</span></td><td>15:11</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-senior-010</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>15:43</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-senior-011</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>16:36</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-senior-012</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>17:11</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-enter-sales-senior-013</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>17:29</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+        <div class="card ">
+          <div class="card-header">
+            <span class="emp-id">enter-sales-staff</span>
+            
+            <span class="task-count">12 tasks</span>
+          </div>
+          <div class="card-meta">
+            <span>🏠 enterprise-sales</span>
+            <span>📍 enterprise-sales</span>
+            <span>🕗 09:50 ~ 17:44</span>
+          </div>
+          <div class="timeline-bar"><div class="tl-label">09:50</div><div class="tl-track"><div class="dot dot-in" style="left:0.0%" title="09:50 attendance-clock-in"></div><div class="dot dot-work" style="left:11.9%" title="10:47 groupoffice-email-read"></div><div class="dot dot-work" style="left:22.4%" title="11:36 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:31.6%" title="12:20 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:38.2%" title="12:51 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:45.2%" title="13:25 nextcloud-file-upload"></div><div class="dot dot-work" style="left:57.5%" title="14:23 groupoffice-calendar-check"></div><div class="dot dot-work" style="left:63.9%" title="14:53 groupoffice-notes-manage"></div><div class="dot dot-work" style="left:73.0%" title="15:36 nextcloud-file-upload"></div><div class="dot dot-work" style="left:82.4%" title="16:21 nextcloud-file-upload"></div><div class="dot dot-work" style="left:93.6%" title="17:14 nextcloud-search"></div><div class="dot dot-out" style="left:100.0%" title="17:44 attendance-clock-out"></div></div><div class="tl-label">17:44</div></div>
+          <details>
+            <summary>Task 목록 (12개)</summary>
+            <table class="task-table">
+              <thead><tr>
+                <th>run_task_id</th><th>task_id</th>
+                <th>type</th><th>scheduled</th><th>status</th>
+              </tr></thead>
+              <tbody><tr class="type-in"><td>20260428-enter-sales-staff-001</td><td>attendance-clock-in</td><td><span class="badge type-in">clock_in</span></td><td>09:50</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-staff-002</td><td>groupoffice-email-read</td><td><span class="badge type-work">work</span></td><td>10:47</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-staff-003</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>11:36</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-staff-004</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>12:20</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-staff-005</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>12:51</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-staff-006</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>13:25</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-staff-007</td><td>groupoffice-calendar-check</td><td><span class="badge type-work">work</span></td><td>14:23</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-staff-008</td><td>groupoffice-notes-manage</td><td><span class="badge type-work">work</span></td><td>14:53</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-staff-009</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>15:36</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-staff-010</td><td>nextcloud-file-upload</td><td><span class="badge type-work">work</span></td><td>16:21</td><td><span class="status">planned</span></td></tr>
+<tr class="type-work"><td>20260428-enter-sales-staff-011</td><td>nextcloud-search</td><td><span class="badge type-work">work</span></td><td>17:14</td><td><span class="status">planned</span></td></tr>
+<tr class="type-out"><td>20260428-enter-sales-staff-012</td><td>attendance-clock-out</td><td><span class="badge type-out">clock_out</span></td><td>17:44</td><td><span class="status">planned</span></td></tr></tbody>
+            </table>
+          </details>
+        </div>
+</div>
+</body>
+</html>

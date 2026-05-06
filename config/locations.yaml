@@ -1,0 +1,36 @@
+locations:
+  - location_id: enterprise-hr
+    vpc_name: enterprise-vpc
+    subnet_name: hr-subnet
+    description: Enterprise HQ - HR Department
+
+  - location_id: enterprise-sales
+    vpc_name: enterprise-vpc
+    subnet_name: sales-subnet
+    description: Enterprise HQ - Sales Department
+
+  - location_id: enterprise-finance
+    vpc_name: enterprise-vpc
+    subnet_name: finance-subnet
+    description: Enterprise HQ - Finance Department
+
+  - location_id: branch-dev
+    vpc_name: branch-vpc
+    subnet_name: dev-subnet
+    description: Branch Office - Development Team
+
+  - location_id: branch-it
+    vpc_name: branch-vpc
+    subnet_name: it-subnet
+    description: Branch Office - IT Team
+
+  - location_id: outdoor-cafe-1
+    vpc_name: cafe-vpc-1
+    subnet_name: cafe-1-subnet
+    description: Outdoor Cafe 1 (Public Network)
+
+  - location_id: outdoor-cafe-2
+    vpc_name: cafe-vpc-2
+    subnet_name: cafe-2-subnet
+    description: Outdoor Cafe 2 (Public Network)
+

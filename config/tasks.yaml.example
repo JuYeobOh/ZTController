@@ -1,0 +1,94 @@
+# tasks.yaml 형식 예시
+# 이 파일을 tasks.yaml로 복사 후 수정하세요.
+#
+# 필수 필드:
+#   task_id : 작업 종류 고유 ID (kebab-case 권장)
+#   site    : 대상 서비스 (groupoffice / dms 등)
+#             dms는 Nextcloud 기반의 사내 파일 서버를 가리키는 식별자.
+#   module  : 서비스 내 모듈명
+#   action  : 수행할 동작명
+#   active  : 활성 여부 (true/false). false이면 daily plan에 포함되지 않음
+#
+# 선택 필드:
+#   params  : 추가 파라미터 (dict 형식, employee container가 참조)
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# 중요: attendance 작업 (clock_in / clock_out)은 반드시 포함해야 합니다.
+#   - attendance-clock-in  : task_type=clock_in 으로 자동 분류
+#   - attendance-clock-out : task_type=clock_out 으로 자동 분류
+#   - 그 외 task는 모두 task_type=work 로 분류됩니다.
+# ─────────────────────────────────────────────────────────────────────────────
+
+tasks:
+
+  # ── Attendance (필수 - 삭제하지 마세요) ──────────────────────────────────
+  - task_id: attendance-clock-in
+    site: groupoffice
+    module: common
+    action: login
+    active: true
+
+  - task_id: attendance-clock-out
+    site: groupoffice
+    module: common
+    action: logout
+    active: true
+
+  # ── GroupOffice 작업 예시 ─────────────────────────────────────────────────
+  - task_id: groupoffice-calendar-check
+    site: groupoffice
+    module: calendar
+    action: switch_view           # 월간/주간/일간 뷰 전환
+    active: true
+
+  - task_id: groupoffice-task-create
+    site: groupoffice
+    module: tasks
+    action: create_or_update_task # 업무 항목 생성 또는 수정
+    active: true
+
+  - task_id: groupoffice-addressbook-search
+    site: groupoffice
+    module: addressbook
+    action: search_contact        # 주소록 검색
+    active: true
+
+  - task_id: groupoffice-notes-manage
+    site: groupoffice
+    module: notes
+    action: create_or_edit_note   # 메모 생성 또는 편집
+    active: true
+
+  - task_id: groupoffice-email-read
+    site: groupoffice
+    module: email
+    action: read_inbox            # 받은 편지함 열람
+    active: true
+
+  # ── DMS (Nextcloud 기반) 작업 예시 ────────────────────────────────────────
+  - task_id: dms-search
+    site: dms
+    module: common
+    action: search                # 전체 검색
+    active: true
+
+  - task_id: dms-file-upload
+    site: dms
+    module: files
+    action: upload_file           # 파일 업로드
+    active: true
+    params:
+      max_file_size_mb: 5         # employee container 참조용 힌트 파라미터
+
+  - task_id: dms-file-browse
+    site: dms
+    module: files
+    action: browse_directory      # 디렉토리 탐색
+    active: true
+
+  # ── 비활성 작업 예시 (daily plan에서 제외됨) ──────────────────────────────
+  - task_id: groupoffice-settings-change
+    site: groupoffice
+    module: settings
+    action: update_profile
+    active: false                 # 현재 비활성 - plan에 포함되지 않음

@@ -1,0 +1,1144 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ZT Controller",
+    "description": "Zero Trust Employee Traffic Simulation Controller",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_api_v1_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employees/{employee_id}/plans/today": {
+      "get": {
+        "summary": "Get Today Plan",
+        "operationId": "get_today_plan_api_v1_employees__employee_id__plans_today_get",
+        "parameters": [
+          {
+            "name": "employee_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Employee Id"
+            }
+          },
+          {
+            "name": "location_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Location Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeePlanResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employees/{employee_id}/plans/{work_date}": {
+      "get": {
+        "summary": "Get Plan By Date",
+        "operationId": "get_plan_by_date_api_v1_employees__employee_id__plans__work_date__get",
+        "parameters": [
+          {
+            "name": "employee_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Employee Id"
+            }
+          },
+          {
+            "name": "work_date",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Work Date"
+            }
+          },
+          {
+            "name": "location_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Location Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeePlanResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/run-tasks/{run_task_id}/status": {
+      "post": {
+        "summary": "Update Status",
+        "operationId": "update_status_api_v1_run_tasks__run_task_id__status_post",
+        "parameters": [
+          {
+            "name": "run_task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Task Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskStatusUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskStatusUpdateResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/run-tasks/{run_task_id}/events": {
+      "post": {
+        "summary": "Post Event",
+        "operationId": "post_event_api_v1_run_tasks__run_task_id__events_post",
+        "parameters": [
+          {
+            "name": "run_task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Task Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskEventRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskEventResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/run-tasks/{run_task_id}/result": {
+      "post": {
+        "summary": "Post Result",
+        "operationId": "post_result_api_v1_run_tasks__run_task_id__result_post",
+        "parameters": [
+          {
+            "name": "run_task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Task Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResultMetadataRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultMetadataResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/daily-plans/generate": {
+      "post": {
+        "summary": "Api Generate Daily Plan",
+        "operationId": "api_generate_daily_plan_api_v1_admin_daily_plans_generate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateDailyPlanRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DailyPlanResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/daily-plans/{work_date}": {
+      "get": {
+        "summary": "Api Get Daily Plan",
+        "operationId": "api_get_daily_plan_api_v1_admin_daily_plans__work_date__get",
+        "parameters": [
+          {
+            "name": "work_date",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Work Date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DailyPlanResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/run-tasks": {
+      "get": {
+        "summary": "Api List Run Tasks",
+        "operationId": "api_list_run_tasks_api_v1_admin_run_tasks_get",
+        "parameters": [
+          {
+            "name": "work_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Work Date"
+            }
+          },
+          {
+            "name": "employee_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Employee Id"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunTaskListResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/seed/reload": {
+      "post": {
+        "summary": "Api Seed Reload",
+        "operationId": "api_seed_reload_api_v1_admin_seed_reload_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SeedReloadResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AssignmentItem": {
+        "properties": {
+          "employee_id": {
+            "type": "string",
+            "title": "Employee Id"
+          },
+          "home_location_id": {
+            "type": "string",
+            "title": "Home Location Id"
+          },
+          "work_location_id": {
+            "type": "string",
+            "title": "Work Location Id"
+          },
+          "is_cafe_dispatch": {
+            "type": "boolean",
+            "title": "Is Cafe Dispatch"
+          },
+          "cafe_location_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cafe Location Id"
+          },
+          "clock_in_at": {
+            "type": "string",
+            "title": "Clock In At"
+          },
+          "clock_out_at": {
+            "type": "string",
+            "title": "Clock Out At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "employee_id",
+          "home_location_id",
+          "work_location_id",
+          "is_cafe_dispatch",
+          "clock_in_at",
+          "clock_out_at"
+        ],
+        "title": "AssignmentItem"
+      },
+      "DailyPlanResponse": {
+        "properties": {
+          "work_date": {
+            "type": "string",
+            "title": "Work Date"
+          },
+          "total_employees": {
+            "type": "integer",
+            "title": "Total Employees"
+          },
+          "cafe_dispatches": {
+            "type": "integer",
+            "title": "Cafe Dispatches"
+          },
+          "total_run_tasks": {
+            "type": "integer",
+            "title": "Total Run Tasks"
+          },
+          "cafe_assignments": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Cafe Assignments"
+          },
+          "assignments": {
+            "items": {
+              "$ref": "#/components/schemas/AssignmentItem"
+            },
+            "type": "array",
+            "title": "Assignments",
+            "default": []
+          },
+          "run_tasks": {
+            "items": {
+              "$ref": "#/components/schemas/RunTaskItem"
+            },
+            "type": "array",
+            "title": "Run Tasks",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "work_date",
+          "total_employees",
+          "cafe_dispatches",
+          "total_run_tasks",
+          "cafe_assignments"
+        ],
+        "title": "DailyPlanResponse"
+      },
+      "EmployeePlanResponse": {
+        "properties": {
+          "work_date": {
+            "type": "string",
+            "title": "Work Date"
+          },
+          "employee_id": {
+            "type": "string",
+            "title": "Employee Id"
+          },
+          "requested_location_id": {
+            "type": "string",
+            "title": "Requested Location Id"
+          },
+          "assigned_location_id": {
+            "type": "string",
+            "title": "Assigned Location Id"
+          },
+          "should_work_here": {
+            "type": "boolean",
+            "title": "Should Work Here"
+          },
+          "clock_in_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Clock In At"
+          },
+          "clock_out_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Clock Out At"
+          },
+          "tasks": {
+            "items": {
+              "$ref": "#/components/schemas/TaskItem"
+            },
+            "type": "array",
+            "title": "Tasks",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "work_date",
+          "employee_id",
+          "requested_location_id",
+          "assigned_location_id",
+          "should_work_here"
+        ],
+        "title": "EmployeePlanResponse"
+      },
+      "GenerateDailyPlanRequest": {
+        "properties": {
+          "work_date": {
+            "type": "string",
+            "title": "Work Date"
+          },
+          "force": {
+            "type": "boolean",
+            "title": "Force",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "work_date"
+        ],
+        "title": "GenerateDailyPlanRequest"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "time": {
+            "type": "string",
+            "title": "Time"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "time"
+        ],
+        "title": "HealthResponse"
+      },
+      "ResultMetadataRequest": {
+        "properties": {
+          "employee_id": {
+            "type": "string",
+            "title": "Employee Id"
+          },
+          "location_id": {
+            "type": "string",
+            "title": "Location Id"
+          },
+          "result_root_path": {
+            "type": "string",
+            "title": "Result Root Path"
+          },
+          "screenshots_path": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Screenshots Path"
+          },
+          "browser_trace_path": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Browser Trace Path"
+          },
+          "network_log_path": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Network Log Path"
+          },
+          "metadata": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Metadata"
+          }
+        },
+        "type": "object",
+        "required": [
+          "employee_id",
+          "location_id",
+          "result_root_path"
+        ],
+        "title": "ResultMetadataRequest"
+      },
+      "ResultMetadataResponse": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "run_task_id": {
+            "type": "string",
+            "title": "Run Task Id"
+          },
+          "result_root_path": {
+            "type": "string",
+            "title": "Result Root Path"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "run_task_id",
+          "result_root_path"
+        ],
+        "title": "ResultMetadataResponse"
+      },
+      "RunTaskItem": {
+        "properties": {
+          "run_task_id": {
+            "type": "string",
+            "title": "Run Task Id"
+          },
+          "employee_id": {
+            "type": "string",
+            "title": "Employee Id"
+          },
+          "task_id": {
+            "type": "string",
+            "title": "Task Id"
+          },
+          "task_type": {
+            "type": "string",
+            "title": "Task Type"
+          },
+          "site": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Site"
+          },
+          "module": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Module"
+          },
+          "action": {
+            "type": "string",
+            "title": "Action"
+          },
+          "scheduled_at": {
+            "type": "string",
+            "title": "Scheduled At"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "run_task_id",
+          "employee_id",
+          "task_id",
+          "task_type",
+          "action",
+          "scheduled_at",
+          "status"
+        ],
+        "title": "RunTaskItem"
+      },
+      "RunTaskListResponse": {
+        "properties": {
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RunTaskItem"
+            },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total",
+          "items"
+        ],
+        "title": "RunTaskListResponse"
+      },
+      "SeedReloadResponse": {
+        "properties": {
+          "employees_loaded": {
+            "type": "integer",
+            "title": "Employees Loaded"
+          },
+          "locations_loaded": {
+            "type": "integer",
+            "title": "Locations Loaded"
+          },
+          "tasks_loaded": {
+            "type": "integer",
+            "title": "Tasks Loaded"
+          }
+        },
+        "type": "object",
+        "required": [
+          "employees_loaded",
+          "locations_loaded",
+          "tasks_loaded"
+        ],
+        "title": "SeedReloadResponse"
+      },
+      "TaskEventRequest": {
+        "properties": {
+          "employee_id": {
+            "type": "string",
+            "title": "Employee Id"
+          },
+          "location_id": {
+            "type": "string",
+            "title": "Location Id"
+          },
+          "event_type": {
+            "type": "string",
+            "title": "Event Type"
+          },
+          "message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Message"
+          },
+          "payload": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Payload"
+          }
+        },
+        "type": "object",
+        "required": [
+          "employee_id",
+          "location_id",
+          "event_type"
+        ],
+        "title": "TaskEventRequest"
+      },
+      "TaskEventResponse": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "run_task_id": {
+            "type": "string",
+            "title": "Run Task Id"
+          },
+          "event_type": {
+            "type": "string",
+            "title": "Event Type"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "run_task_id",
+          "event_type",
+          "created_at"
+        ],
+        "title": "TaskEventResponse"
+      },
+      "TaskItem": {
+        "properties": {
+          "run_task_id": {
+            "type": "string",
+            "title": "Run Task Id"
+          },
+          "task_id": {
+            "type": "string",
+            "title": "Task Id"
+          },
+          "task_type": {
+            "type": "string",
+            "title": "Task Type"
+          },
+          "site": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Site"
+          },
+          "module": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Module"
+          },
+          "action": {
+            "type": "string",
+            "title": "Action"
+          },
+          "scheduled_at": {
+            "type": "string",
+            "title": "Scheduled At"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "run_task_id",
+          "task_id",
+          "task_type",
+          "action",
+          "scheduled_at",
+          "status"
+        ],
+        "title": "TaskItem"
+      },
+      "TaskStatusUpdateRequest": {
+        "properties": {
+          "employee_id": {
+            "type": "string",
+            "title": "Employee Id"
+          },
+          "location_id": {
+            "type": "string",
+            "title": "Location Id"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "result_path": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Result Path"
+          },
+          "error_message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error Message"
+          },
+          "metadata": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Metadata"
+          }
+        },
+        "type": "object",
+        "required": [
+          "employee_id",
+          "location_id",
+          "status"
+        ],
+        "title": "TaskStatusUpdateRequest"
+      },
+      "TaskStatusUpdateResponse": {
+        "properties": {
+          "run_task_id": {
+            "type": "string",
+            "title": "Run Task Id"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "started_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Started At"
+          },
+          "completed_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Completed At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "run_task_id",
+          "status"
+        ],
+        "title": "TaskStatusUpdateResponse"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

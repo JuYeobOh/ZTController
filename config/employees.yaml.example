@@ -1,0 +1,62 @@
+# employees.yaml 형식 예시
+# 이 파일을 employees.yaml로 복사 후 수정하세요.
+#
+# 필수 필드:
+#   employee_id     : 직원 고유 ID (kebab-case 권장)
+#   username        : 실제 로그인 username (GroupOffice / Nextcloud 계정명)
+#   department      : 부서명
+#   role            : 직책 (director / manager / senior / staff 등)
+#   home_location_id: 기본 근무 location (locations.yaml의 location_id와 일치해야 함)
+#   active          : 활성 여부 (true/false)
+#   eligible_for_cafe: 카페 야외 근무 가능 여부 (true/false)
+#
+# 선택 필드:
+#   secret_ref      : 비밀번호 참조 문자열 (실제 비밀번호 저장 금지)
+#                     예) "vault:secret/zt/employees/enter-hr-staff"
+
+employees:
+
+  # ── Enterprise - HR 부서 ──────────────────────────────────────────────────
+  - employee_id: enter-hr-director
+    username: enter-hr-director          # GroupOffice / Nextcloud 로그인 ID
+    department: hr
+    role: director
+    home_location_id: enterprise-hr
+    active: true
+    eligible_for_cafe: true
+    # secret_ref: "vault:secret/zt/employees/enter-hr-director"
+
+  - employee_id: enter-hr-staff
+    username: enter-hr-staff
+    department: hr
+    role: staff
+    home_location_id: enterprise-hr
+    active: true
+    eligible_for_cafe: true
+
+  # ── Enterprise - Sales 부서 ───────────────────────────────────────────────
+  - employee_id: enter-sales-manager
+    username: enter-sales-manager
+    department: sales
+    role: manager
+    home_location_id: enterprise-sales
+    active: true
+    eligible_for_cafe: true
+
+  # ── Branch - Dev 팀 ───────────────────────────────────────────────────────
+  - employee_id: branch-dev-senior
+    username: branch-dev-senior
+    department: development
+    role: senior
+    home_location_id: branch-dev
+    active: true
+    eligible_for_cafe: false             # 이 직원은 카페 근무 불가
+
+  # ── 비활성 직원 예시 ──────────────────────────────────────────────────────
+  - employee_id: enter-fin-temp
+    username: enter-fin-temp
+    department: finance
+    role: staff
+    home_location_id: enterprise-finance
+    active: false                        # 비활성: daily plan에 포함되지 않음
+    eligible_for_cafe: false

@@ -1,0 +1,241 @@
+# Controller가 매일 plan 생성 시 직원에게 무작위로 발행하는 work task 정의.
+# Agent의 sites/groupoffice.py · sites/dms.py 의 _ACTION_TEMPLATES와 동일한
+# 모듈/액션을 모두 발행한다 (Agent 기준 SSOT).
+
+tasks:
+  # ── Attendance (clock_in / clock_out 전용) ────────────────────────────────
+  - task_id: attendance-clock-in
+    site: groupoffice
+    module: common
+    action: login
+    active: true
+
+  - task_id: attendance-clock-out
+    site: groupoffice
+    module: common
+    action: logout
+    active: true
+
+  # ── GroupOffice — Calendar ────────────────────────────────────────────────
+  - task_id: groupoffice-calendar-switch-view
+    site: groupoffice
+    module: calendar
+    action: switch_view
+    active: true
+
+  - task_id: groupoffice-calendar-create-event
+    site: groupoffice
+    module: calendar
+    action: create_event
+    active: true
+
+  - task_id: groupoffice-calendar-manage-category
+    site: groupoffice
+    module: calendar
+    action: manage_category
+    active: true
+
+  - task_id: groupoffice-calendar-assign-category
+    site: groupoffice
+    module: calendar
+    action: assign_category
+    active: true
+
+  # ── GroupOffice — Address Book ────────────────────────────────────────────
+  - task_id: groupoffice-addressbook-view
+    site: groupoffice
+    module: address_book
+    action: view_contacts
+    active: true
+
+  - task_id: groupoffice-addressbook-search
+    site: groupoffice
+    module: address_book
+    action: search_contact
+    active: true
+
+  - task_id: groupoffice-addressbook-add-contact
+    site: groupoffice
+    module: address_book
+    action: add_contact
+    active: true
+
+  - task_id: groupoffice-addressbook-add-organization
+    site: groupoffice
+    module: address_book
+    action: add_organization
+    active: true
+
+  - task_id: groupoffice-addressbook-comment-contact
+    site: groupoffice
+    module: address_book
+    action: comment_contact
+    active: true
+
+  # ── GroupOffice — Tasks ───────────────────────────────────────────────────
+  - task_id: groupoffice-tasks-view
+    site: groupoffice
+    module: tasks
+    action: view_tasks
+    active: true
+
+  - task_id: groupoffice-tasks-create-or-update
+    site: groupoffice
+    module: tasks
+    action: create_or_update_task
+    active: true
+
+  - task_id: groupoffice-tasks-complete
+    site: groupoffice
+    module: tasks
+    action: complete_task
+    active: true
+
+  - task_id: groupoffice-tasks-comment
+    site: groupoffice
+    module: tasks
+    action: comment_task
+    active: true
+
+  - task_id: groupoffice-tasks-manage-category
+    site: groupoffice
+    module: tasks
+    action: manage_category
+    active: true
+
+  - task_id: groupoffice-tasks-assign-category
+    site: groupoffice
+    module: tasks
+    action: assign_category
+    active: true
+
+  # ── GroupOffice — Notes ───────────────────────────────────────────────────
+  - task_id: groupoffice-notes-view
+    site: groupoffice
+    module: notes
+    action: view_notes
+    active: true
+
+  - task_id: groupoffice-notes-create
+    site: groupoffice
+    module: notes
+    action: create_note
+    active: true
+
+  - task_id: groupoffice-notes-create-or-edit
+    site: groupoffice
+    module: notes
+    action: create_or_edit_note
+    active: true
+
+  - task_id: groupoffice-notes-comment
+    site: groupoffice
+    module: notes
+    action: comment_note
+    active: true
+
+  - task_id: groupoffice-notes-manage-notebook
+    site: groupoffice
+    module: notes
+    action: manage_notebook
+    active: true
+
+  # ── GroupOffice — Bookmarks ───────────────────────────────────────────────
+  - task_id: groupoffice-bookmarks-view
+    site: groupoffice
+    module: bookmarks
+    action: view_bookmarks
+    active: true
+
+  - task_id: groupoffice-bookmarks-create
+    site: groupoffice
+    module: bookmarks
+    action: create_bookmark
+    active: true
+
+  - task_id: groupoffice-bookmarks-manage
+    site: groupoffice
+    module: bookmarks
+    action: manage_bookmark
+    active: true
+
+  # ── DMS (Nextcloud 기반) — Files ──────────────────────────────────────────
+  - task_id: dms-files-view
+    site: dms
+    module: files
+    action: view_files
+    active: true
+
+  - task_id: dms-files-recent
+    site: dms
+    module: files
+    action: view_recent
+    active: true
+
+  - task_id: dms-files-favorites
+    site: dms
+    module: files
+    action: view_favorites
+    active: true
+
+  - task_id: dms-files-browse
+    site: dms
+    module: files
+    action: browse_directory
+    active: true
+
+  - task_id: dms-files-upload
+    site: dms
+    module: files
+    action: upload_file
+    active: true
+
+  - task_id: dms-files-create-folder
+    site: dms
+    module: files
+    action: create_folder
+    active: true
+
+  - task_id: dms-files-rename
+    site: dms
+    module: files
+    action: rename_file
+    active: true
+
+  - task_id: dms-files-move
+    site: dms
+    module: files
+    action: move_file
+    active: true
+
+  - task_id: dms-files-team-folder-browse
+    site: dms
+    module: files
+    action: team_folder_browse
+    active: true
+
+  - task_id: dms-files-team-folder-create
+    site: dms
+    module: files
+    action: team_folder_create
+    active: true
+
+  # ── DMS — Sharing ─────────────────────────────────────────────────────────
+  - task_id: dms-sharing-share-file
+    site: dms
+    module: sharing
+    action: share_file
+    active: true
+
+  # ── DMS — Search ──────────────────────────────────────────────────────────
+  - task_id: dms-search-files
+    site: dms
+    module: search
+    action: search_files
+    active: true
+
+  - task_id: dms-common-search
+    site: dms
+    module: common
+    action: search
+    active: true

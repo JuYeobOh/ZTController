@@ -1,0 +1,165 @@
+employees:
+  # ── Branch - Development ─────────────────────────────────────────────────
+  - employee_id: branch-dev-director
+    username: branch-dev-director
+    department: development
+    role: director
+    home_location_id: branch-dev
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: branch-dev-manager
+    username: branch-dev-manager
+    department: development
+    role: manager
+    home_location_id: branch-dev
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: branch-dev-senior
+    username: branch-dev-senior
+    department: development
+    role: senior
+    home_location_id: branch-dev
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: branch-dev-staff
+    username: branch-dev-staff
+    department: development
+    role: staff
+    home_location_id: branch-dev
+    active: true
+    eligible_for_cafe: true
+
+  # ── Branch - IT ──────────────────────────────────────────────────────────
+  - employee_id: branch-it-director
+    username: branch-it-director
+    department: it
+    role: director
+    home_location_id: branch-it
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: branch-it-manager
+    username: branch-it-manager
+    department: it
+    role: manager
+    home_location_id: branch-it
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: branch-it-senior
+    username: branch-it-senior
+    department: it
+    role: senior
+    home_location_id: branch-it
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: branch-it-staff
+    username: branch-it-staff
+    department: it
+    role: staff
+    home_location_id: branch-it
+    active: true
+    eligible_for_cafe: true
+
+  # ── Enterprise - Finance ─────────────────────────────────────────────────
+  - employee_id: enter-fin-director
+    username: enter-fin-director
+    department: finance
+    role: director
+    home_location_id: enterprise-finance
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: enter-fin-manager
+    username: enter-fin-manager
+    department: finance
+    role: manager
+    home_location_id: enterprise-finance
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: enter-fin-senior
+    username: enter-fin-senior
+    department: finance
+    role: senior
+    home_location_id: enterprise-finance
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: enter-fin-staff
+    username: enter-fin-staff
+    department: finance
+    role: staff
+    home_location_id: enterprise-finance
+    active: true
+    eligible_for_cafe: true
+
+  # ── Enterprise - HR ──────────────────────────────────────────────────────
+  - employee_id: enter-hr-director
+    username: enter-hr-director
+    department: hr
+    role: director
+    home_location_id: enterprise-hr
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: enter-hr-manager
+    username: enter-hr-manager
+    department: hr
+    role: manager
+    home_location_id: enterprise-hr
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: enter-hr-senior
+    username: enter-hr-senior
+    department: hr
+    role: senior
+    home_location_id: enterprise-hr
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: enter-hr-staff
+    username: enter-hr-staff
+    department: hr
+    role: staff
+    home_location_id: enterprise-hr
+    active: true
+    eligible_for_cafe: true
+
+  # ── Enterprise - Sales ───────────────────────────────────────────────────
+  - employee_id: enter-sales-director
+    username: enter-sales-director
+    department: sales
+    role: director
+    home_location_id: enterprise-sales
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: enter-sales-manager
+    username: enter-sales-manager
+    department: sales
+    role: manager
+    home_location_id: enterprise-sales
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: enter-sales-senior
+    username: enter-sales-senior
+    department: sales
+    role: senior
+    home_location_id: enterprise-sales
+    active: true
+    eligible_for_cafe: true
+
+  - employee_id: enter-sales-staff
+    username: enter-sales-staff
+    department: sales
+    role: staff
+    home_location_id: enterprise-sales
+    active: true
+    eligible_for_cafe: true
