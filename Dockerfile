@@ -7,12 +7,9 @@ RUN pip install --no-cache-dir .
 
 COPY . .
 
-RUN mkdir -p /app/data && \
-    addgroup --system appgroup && \
-    adduser --system --ingroup appgroup appuser && \
-    chown -R appuser:appgroup /app/data
+RUN mkdir -p /app/data
 
-# 기본값만 설정 — 토큰은 반드시 docker run -e 로 주입
+# 기본값만 설정
 ENV CONTROLLER_DB_URL=sqlite:///./data/controller.db \
     CONTROLLER_TIMEZONE=Asia/Seoul \
     DAILY_PLAN_GENERATION_HOUR=6 \
@@ -22,6 +19,7 @@ ENV CONTROLLER_DB_URL=sqlite:///./data/controller.db \
 
 EXPOSE 8443
 
-USER appuser
+# private VPC 시뮬 환경이라 root로 실행 (호스트 mount 폴더 권한 호환).
+# 운영 환경에서는 호스트 폴더 chown으로 비-root 실행 권장.
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8443"]

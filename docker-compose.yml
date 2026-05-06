@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   controller:
     build:
@@ -8,16 +6,11 @@ services:
     container_name: zt-controller
     ports:
       - "8443:8443"
-    environment:
-      # .env 파일로 오버라이드 가능
-      CONTROLLER_DB_URL: sqlite:///./data/controller.db
-      CONTROLLER_TIMEZONE: Asia/Seoul
-      DAILY_PLAN_GENERATION_HOUR: "6"
-      TASK_SEED_FILE: ./config/tasks.yaml
-      EMPLOYEE_SEED_FILE: ./config/employees.yaml
-      LOCATION_SEED_FILE: ./config/locations.yaml
+    # 모든 환경변수는 .env에서 (운영 다이얼 포함). 컨테이너 시작 시 자동 주입.
+    env_file:
+      - .env
     volumes:
-      # DB 파일 영속화
+      # DB 영속화
       - ./data:/app/data
       # seed YAML을 외부에서 마운트하면 재시작 없이 수정 가능
       - ./config:/app/config:ro
@@ -28,21 +21,3 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
-
-  # PostgreSQL로 운영할 경우 아래 주석 해제
-  # db:
-  #   image: postgres:15-alpine
-  #   container_name: zt-controller-db
-  #   environment:
-  #     POSTGRES_USER: ztuser
-  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
-  #     POSTGRES_DB: ztcontroller
-  #   volumes:
-  #     - pg_data:/var/lib/postgresql/data
-  #   healthcheck:
-  #     test: ["CMD-SHELL", "pg_isready -U ztuser -d ztcontroller"]
-  #     interval: 10s
-  #     retries: 5
-
-# volumes:
-#   pg_data:

@@ -40,14 +40,33 @@ DAILY_PLAN_GENERATION_HOUR=6
 TASK_SEED_FILE=./config/tasks.yaml
 EMPLOYEE_SEED_FILE=./config/employees.yaml
 LOCATION_SEED_FILE=./config/locations.yaml
+
+# ── 운영 다이얼 (수정 후 sudo docker compose restart) ──
+CAFE_PROBABILITY=0.3
+TASK_GAP_MIN_SECONDS=1800
+TASK_GAP_MAX_SECONDS=3600
+CLOCK_IN_HOUR=8
+CLOCK_IN_RANGE_HOURS=2
+CLOCK_OUT_HOUR=17
+CLOCK_OUT_RANGE_HOURS=2
 EOF
 
 echo "==[4/4] Compose up + 검증"
 docker compose up -d --build
-sleep 4
+
+# health endpoint가 응답할 때까지 최대 60초 polling
+echo "Controller startup 대기 중..."
+for i in $(seq 1 30); do
+    if curl -fsS http://localhost:8443/api/v1/health >/dev/null 2>&1; then
+        echo "✓ health OK (${i}회 시도, ~$((i*2))초)"
+        break
+    fi
+    sleep 2
+done
+
 docker compose ps
 echo "--"
-curl -fsS http://localhost:8443/api/v1/health && echo
+curl -s http://localhost:8443/api/v1/health && echo
 echo
 echo "── DONE ── Controller 가동 중 (port 8443)"
 echo "로그 스트림:  docker compose logs -f controller"

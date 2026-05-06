@@ -12,9 +12,7 @@ from app.utils.random_seed import get_seeded_random, make_daily_seed
 from app.utils.time import to_utc_naive
 
 _CAFE_LOCATIONS = ["outdoor-cafe-1", "outdoor-cafe-2"]
-_CAFE_PROB = 0.3
-_TASK_GAP_MIN = 30 * 60  # 작업 간 최소 간격: 30분 (초)
-_TASK_GAP_MAX = 60 * 60  # 작업 간 최대 간격: 60분 (초)
+# 카페 확률, task gap, 출/퇴근 시간은 settings에서 읽음 (.env로 조정 가능 — 운영 다이얼)
 
 
 def _plan_exists(work_date: date, db: Session) -> bool:
@@ -100,7 +98,7 @@ def generate_daily_plan(
     cafe_dispatch: dict[str, str] = {}
 
     for cafe_loc in _CAFE_LOCATIONS:
-        if rng.random() < _CAFE_PROB:
+        if rng.random() < settings.CAFE_PROBABILITY:
             already = set(cafe_dispatch.keys())
             available = [e for e in eligible if e.employee_id not in already]
             if available:
@@ -123,15 +121,17 @@ def generate_daily_plan(
             work_location_id = employee.home_location_id
             is_cafe = False
 
-        # clock_in: 08:00 ~ 10:00 KST  (0 ~ 7200 seconds offset)
+        # clock_in: settings.CLOCK_IN_HOUR ~ +RANGE_HOURS (기본 08:00 ~ 10:00 KST)
         clock_in_kst = datetime(
-            work_date.year, work_date.month, work_date.day, 8, 0, 0, tzinfo=tz
-        ) + timedelta(seconds=rng.randint(0, 7200))
+            work_date.year, work_date.month, work_date.day,
+            settings.CLOCK_IN_HOUR, 0, 0, tzinfo=tz
+        ) + timedelta(seconds=rng.randint(0, settings.CLOCK_IN_RANGE_HOURS * 3600))
 
-        # clock_out: 17:00 ~ 19:00 KST (0 ~ 7200 seconds offset)
+        # clock_out: settings.CLOCK_OUT_HOUR ~ +RANGE_HOURS (기본 17:00 ~ 19:00 KST)
         clock_out_kst = datetime(
-            work_date.year, work_date.month, work_date.day, 17, 0, 0, tzinfo=tz
-        ) + timedelta(seconds=rng.randint(0, 7200))
+            work_date.year, work_date.month, work_date.day,
+            settings.CLOCK_OUT_HOUR, 0, 0, tzinfo=tz
+        ) + timedelta(seconds=rng.randint(0, settings.CLOCK_OUT_RANGE_HOURS * 3600))
 
         clock_in_utc = to_utc_naive(clock_in_kst)
         clock_out_utc = to_utc_naive(clock_out_kst)
@@ -176,13 +176,13 @@ def generate_daily_plan(
         # work tasks: clock_in ~ clock_out 사이를 30~60분 간격으로 채움
         if work_tasks_sorted:
             work_secs = (clock_out_kst - clock_in_kst).total_seconds()
-            current = float(rng.randint(_TASK_GAP_MIN, _TASK_GAP_MAX))
+            current = float(rng.randint(settings.TASK_GAP_MIN_SECONDS, settings.TASK_GAP_MAX_SECONDS))
             selected = []
             offsets = []
             while current < work_secs:
                 offsets.append(current)
                 selected.append(rng.choice(work_tasks_sorted))
-                current += rng.randint(_TASK_GAP_MIN, _TASK_GAP_MAX)
+                current += rng.randint(settings.TASK_GAP_MIN_SECONDS, settings.TASK_GAP_MAX_SECONDS)
 
             for task_def, offset in zip(selected, offsets):
                 scheduled_utc = to_utc_naive(clock_in_kst + timedelta(seconds=offset))
