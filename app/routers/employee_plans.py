@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models import DailyAssignment, RunTask
 from app.schemas import EmployeePlanResponse, TaskItem
-from app.utils.time import format_kst
+from app.utils.time import format_kst, kst_now
 
 router = APIRouter()
 
@@ -67,7 +67,8 @@ def get_today_plan(
     location_id: str = Query(...),
     db: Session = Depends(get_db),
 ):
-    today = date.today()
+    # KST 기준 today. OS TZ에 의존하지 않도록 명시.
+    today = kst_now().date()
     assignment = (
         db.query(DailyAssignment)
         .filter(

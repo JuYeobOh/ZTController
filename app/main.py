@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import logging
 from contextlib import asynccontextmanager
-from datetime import date
 
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
@@ -13,6 +12,15 @@ from app.database import SessionLocal, init_db
 from app.routers import admin, employee_plans, health, run_tasks
 from app.services.daily_plan import generate_daily_plan
 from app.services.seed_loader import reload_seed
+from app.utils.time import kst_now
+
+# uvicorn은 자기 logger만 설정하므로 app.* / apscheduler.* logger도 stdout으로
+# 찍히게 root에 handler 강제 부착. force=True로 uvicorn의 root 설정도 덮어씀.
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    force=True,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -20,8 +28,10 @@ logger = logging.getLogger(__name__)
 def _run_daily_plan_job() -> None:
     db = SessionLocal()
     try:
-        generate_daily_plan(date.today(), db)
-        logger.info("Daily plan generated for %s", date.today())
+        # KST 기준 today. OS TZ에 의존하지 않도록 명시.
+        today = kst_now().date()
+        generate_daily_plan(today, db)
+        logger.info("Daily plan generated for %s", today)
     except Exception as exc:
         logger.error("Daily plan generation failed: %s", exc)
     finally:

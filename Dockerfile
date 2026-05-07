@@ -1,5 +1,13 @@
 FROM python:3.11-slim
 
+# tzdata: APScheduler가 Asia/Seoul cron을 정확히 트리거하려면 필요.
+# curl: docker-compose healthcheck 용.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    tzdata curl \
+    && rm -rf /var/lib/apt/lists/* \
+    && ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime \
+    && echo "Asia/Seoul" > /etc/timezone
+
 WORKDIR /app
 
 COPY pyproject.toml .
