@@ -10,7 +10,8 @@ set -euo pipefail
 GIT_USER="${GIT_USER:-JuYeobOh}"
 
 echo "==[1/4] 패키지 + Docker"
-dnf install -y git docker
+# sqlite/awscli: scripts/backup-db-to-s3.sh 가 사용 (DB → S3 백업).
+dnf install -y git docker sqlite awscli
 systemctl enable --now docker
 
 echo "==[2/4] Compose + Buildx 플러그인"
@@ -51,8 +52,21 @@ CLOCK_OUT_HOUR=17
 CLOCK_OUT_RANGE_HOURS=2
 EOF
 
-echo "==[4/4] Compose up + 검증"
+echo "==[4/4] Compose up + 검증 + DB 백업 timer"
 docker compose up -d --build
+
+# DB 백업 systemd unit 등록 (매일 KST 02:00 자동 + 수동 트리거 가능)
+mkdir -p /etc/zt
+cat > /etc/zt/db-backup.env <<EOF
+ZT_S3_BUCKET=${ZT_S3_BUCKET:-kmuinfosec-lab-zt-testbed-logs}
+ZT_S3_DB_PREFIX=${ZT_S3_DB_PREFIX:-controller-db}
+EOF
+chmod 600 /etc/zt/db-backup.env
+chmod +x /opt/ZTController/scripts/backup-db-to-s3.sh
+cp /opt/ZTController/deploy/zt-db-backup.service /etc/systemd/system/
+cp /opt/ZTController/deploy/zt-db-backup.timer   /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable --now zt-db-backup.timer
 
 # health endpoint가 응답할 때까지 최대 60초 polling
 echo "Controller startup 대기 중..."

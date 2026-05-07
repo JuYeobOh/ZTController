@@ -1,0 +1,12 @@
+[Unit]
+Description=ZeroTrust Controller SQLite DB backup to S3
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/zt/db-backup.env
+ExecStart=/opt/ZTController/scripts/backup-db-to-s3.sh
+
+StandardOutput=journal
+StandardError=journal

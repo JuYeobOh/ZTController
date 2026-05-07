@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily ZeroTrust Controller DB backup (KST 08:00)
+
+[Timer]
+# KST 08:00 매일. EC2가 그 시각 정지되어 있다가 켜지면 Persistent로 catch-up.
+OnCalendar=*-*-* 08:00:00 Asia/Seoul
+Persistent=true
+Unit=zt-db-backup.service
+
+[Install]
+WantedBy=timers.target
