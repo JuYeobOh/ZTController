@@ -136,7 +136,8 @@ curl "http://localhost:8443/api/v1/employees/enter-hr-staff/plans/today?location
 
 ### 특정 날짜 plan 조회
 ```bash
-curl "http://localhost:8443/api/v1/employees/enter-hr-staff/plans/2026-04-27?location_id=enterprise-hr"```
+curl "http://localhost:8443/api/v1/employees/enter-hr-staff/plans/2026-04-27?location_id=enterprise-hr"
+```
 
 ---
 

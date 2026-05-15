@@ -65,6 +65,7 @@ async def lifespan(app: FastAPI):
             minute=0,
             timezone=settings.CONTROLLER_TIMEZONE,
         ),
+        misfire_grace_time=3600,
     )
     scheduler.start()
     logger.info(
